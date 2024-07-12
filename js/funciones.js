@@ -1,36 +1,40 @@
 function muestraProductos(){
     for (const producto of productos){
+        const divProducto = document.createElement('ul')
+        const img = document.createElement('img')
+        img.height = 80;
+        img.src = `img/${(producto.descripcion).toUpperCase()}.png`
+        divProducto.appendChild(img);
         const li = document.createElement('li');
-        li.innerHTML = `Nombre: ${producto.descripcion} -- Precio: $${producto.precio} // CODIGO: ${producto.codigo} `;    
-        divProductos.appendChild(li);
-        botonesCompra(producto.codigo);
-    }
-}
-
-
-        /////////////Funcion para generar botones de productos
-function botonesCompra (codigo){
-    //Botones Mas
+        li.innerHTML = `${producto.descripcion} -- Precio: $${producto.precio} // CODIGO: ${producto.codigo} `;    
+        divProducto.appendChild(li);
+        const divBotones = document.createElement('div')
         const botonMas = crearBoton("+",2);
         botonMas.onclick = () => {
-            limpiarDiv("resultado")
-            sumarCarrito(codigo,1);
+            limpiarDiv("muestra")
+            sumarCarrito(producto.codigo,1);
             calculoGastos();
         };
-        divProductos.appendChild(botonMas);
+        divBotones.appendChild(botonMas);
     // Botones Menos
         const botonMenos = crearBoton("-",2);
         botonMenos.onclick = () => {
-            limpiarDiv("resultado")
-            const comparacion = carrito.find(t => t.code === codigo);
-            !comparacion == undefined ? alert("Cantidad no puede ser menor a 0!") : restarCarrito(codigo,1);
+            limpiarDiv("muestra")
+            const comparacion = carrito.find(t => t.code === producto.codigo);
+            !comparacion == undefined ? Swal.fire("Cantidad no puede ser menor a 0"): restarCarrito(producto.codigo,1);
             calculoGastos();
         };
-        divProductos.appendChild(botonMenos);
+        divBotones.appendChild(botonMenos);
+        divProducto.style.width = '300px';
+        divProducto.appendChild(divBotones)
+        divProductos.style.display = 'grid';
+        divProductos.style.gridTemplateColumns = 'repeat(auto-fill, minmax(250px, 1fr))'
+        divProductos.appendChild(divProducto);
+    }
 }
 
 /////////////Funcion agregar a carrito
-
+    
 function sumarCarrito (indice, cantidad){
     const productoASumar = productos.find(p => p.codigo === indice);
     const carritoItemSumar = carrito.find(itemSuma => itemSuma.code === indice);
@@ -40,7 +44,7 @@ function sumarCarrito (indice, cantidad){
 function restarCarrito (indice, cantidad){
     const productoARestar = productos.find(q => q.codigo === indice);
     const carritoItemRestar = carrito.find(itemResta => itemResta.code === productoARestar.codigo);
-    !carritoItemRestar ? alert("Cantidad no puede ser menor a 0") : carritoItemRestar && carritoItemRestar.cantidad == 1 ? ((carrito = carrito.filter(obj => obj.code !== productoARestar.codigo))) : carritoItemRestar.cantidad -= cantidad;
+    !carritoItemRestar ? Swal.fire("Cantidad no puede ser menor a 0") : carritoItemRestar && carritoItemRestar.cantidad == 1 ? ((carrito = carrito.filter(obj => obj.code !== productoARestar.codigo))) : carritoItemRestar.cantidad -= cantidad;
 }
 
 
@@ -57,9 +61,9 @@ function cartLoad() {
 /////////////Funcion para calcular y mostrar los gastos
 
 function calculoGastos(){
-    const divCarrito = document.getElementById('resultado');
+    const divCarrito = document.getElementById('muestra')
     cuerpo.appendChild(divCarrito);
-    let gastos = 0;
+    let gastos = 0; 
 
     for (const compras of carrito) {
         const divCompras = document.createElement('p');
@@ -67,13 +71,11 @@ function calculoGastos(){
         divCarrito.appendChild(divCompras);
         gastos += (compras.precio*compras.cantidad);
     }
-    const gastoTotal = document.createElement('p');
-    gastoTotal.innerHTML = `El total de su compra seria : $${gastos}`;
-    divCarrito.appendChild(gastoTotal);
+    localStorage.setItem("gastoTotal",gastos)
 }
 
 /////////////Modificacion de Precios
-
+/*
 function modificacionLista (){
     const nuevoMain = document.getElementById('main')
     for (const variables of productos){
@@ -115,6 +117,7 @@ function modificacionLista (){
             modificacionLista ();
         }
     }
+    
     // Boton para agregar Items
     const botonAgregar = crearBoton("Agregar",4);
     cuerpo.appendChild(botonAgregar);
@@ -133,7 +136,7 @@ function modificacionLista (){
             console.log(codigo.value)
             console.log(nuevoProducto)
             if (nuevoProducto !== -1){
-                alert ("Codigo ya existe")
+                Swal.fire("Codigo ya existe");
             }productos.push({
                 descripcion: '',
                 precio: 0,
@@ -157,47 +160,8 @@ function modificacionLista (){
         nuevoMain.appendChild(divisorProductos);
         botonAgregar.disabled = true;
     }
-    // Configuacion Boton salir Admin
-    const botonSalirAdmin = crearBoton("Salir Admin");
-    cuerpo.appendChild(botonSalirAdmin);
-    botonSalirAdmin.onclick = () =>{
-        limpiarDiv("main");
-        divProductos.innerHTML = '';
-        cuerpo.appendChild(divProductos);
-        botonSalirAdmin.remove();
-        botonAgregar.remove();
-        muestraProductos();
-        cuerpo.appendChild(botonCompra);
-        cuerpo.appendChild(botonAdmin);
-        tituloProductos.innerText = "Lista de Productos";
-        limpiarDiv("resultado")
-    }
 }
-
-
-
-function adminMode(){
-
-    tituloProductos.innerText = "Ingrese Usuario y Contraseña"
-    const user = crearInput("",4);
-    const pass = crearInput("",4);
-    const aceptar = crearBoton("Aceptar", 4);
-
-    cuerpo.appendChild(user);
-    cuerpo.appendChild(pass);
-    cuerpo.appendChild(aceptar);
-
-    aceptar.onclick = () => {
-        if (user.value == "" && pass.value == ""){
-            modificacionLista();
-            aceptar.remove();
-            user.remove();
-            pass.remove();
-            tituloProductos.innerText = "Modificacion de Precios";
-
-        }else alert("Datos incorrectos ( es admin admin)");
-    }
-}
+*/
 
 /////////////Funcion para crear botones
 function crearBoton(texto,rem){
@@ -217,4 +181,14 @@ function crearInput(texto,rem){
 function limpiarDiv(parametro){
     const limpiarDivision = document.getElementById (parametro);
     if (limpiarDivision) {limpiarDivision.innerHTML = ''; }
+}
+
+function muestreoCarrito(carritoObj){
+
+    for (obj of carritoObj){
+        console.log(carritoObj)
+        const li = document.createElement('li');
+        li.innerText = `${obj.nombre} - Precio: $${obj.precio} Cantidad: ${obj.cantidad} `
+        mainDIv.appendChild(li);
+    };
 }

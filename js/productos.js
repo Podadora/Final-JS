@@ -19,7 +19,7 @@ let productos = [
         codigo: 2,
     },
     {
-        descripcion: 'Yogurth',
+        descripcion: 'Yogur',
         precio: 300,
         codigo: 3,
 
@@ -64,26 +64,25 @@ muestraProductos();
 const espacioBotonCompra = document.createElement('h2');
 const botonCompra = crearBoton("Comprar");
 espacioBotonCompra.appendChild(botonCompra);
-cuerpo.appendChild(espacioBotonCompra);
+footer.appendChild(espacioBotonCompra);
 
-// Boton Admin
-const espacioBotonAdmin = document.createElement('h3');
-const botonAdmin = crearBoton("Admin Mode");
-espacioBotonAdmin.appendChild(botonAdmin);
-cuerpo.appendChild(espacioBotonAdmin);
 
 //BotonCompra OnClick
 botonCompra.onclick= () => {
-    cartSave('Carrito', JSON.stringify(carrito));
-    botonAdmin.remove();
-};
-
-//BotonAdmin OnClick
-botonAdmin.onclick= () => {
-    botonAdmin.remove();
-    divProductos.remove();
-    botonCompra.remove();
-    adminMode();
+    if (carrito === null || carrito == []){
+        Swal.fire({
+            title:"No hay items seleccionados",
+            text:"",
+            icon:"error"
+            });;
+    }else {
+        cartSave('Carrito', JSON.stringify(carrito));
+        Swal.fire({
+            title:"Cargado exitosamente al carrito",
+            text:"Continue de la pestaña Carrito",
+            icon:"success"
+            });;
+    }
 };
 
 /////////////Constructor productos para carrito
