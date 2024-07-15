@@ -1,3 +1,5 @@
+
+
 // Centrado de Body
 const footer = document.getElementById('resultado')
 const cuerpo = document.body;
@@ -8,7 +10,8 @@ const mainDIv = document.getElementById('main')
 const titulo = document.getElementById('titulo');
 // Carrito
 let carrito = [];
-
+let productos = []
+let preCarrito = []
 // Nav bar
 const cabecera = document.getElementById('header');
 const navegacion = document.createElement('navbar');

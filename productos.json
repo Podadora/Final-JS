@@ -1,0 +1,94 @@
+[
+    {
+        "descripcion": "Queso",
+        "precio": 200,
+        "codigo": 1
+        
+    },
+    {
+        "descripcion": "Leche",
+        "precio": 220,
+        "codigo": 2
+    },
+    {
+        "descripcion": "Yogur",
+        "precio": 300,
+        "codigo": 3
+
+    },
+    {
+        "descripcion": "Yerba",
+        "precio": 330,
+        "codigo": 4
+
+    },
+    {
+        "descripcion": "Pan",
+        "precio": 500,
+        "codigo": 5
+
+    },
+    {
+        "descripcion": "Helado",
+        "precio": 870,
+        "codigo": 6
+
+    },
+    {
+        "descripcion": "Fideos",
+        "precio": 160,
+        "codigo": 7
+
+    },
+    {
+        "descripcion": "Jamon",
+        "precio": 450,
+        "codigo": 8
+    },
+    {
+        "descripcion": "Queso",
+        "precio": 200,
+        "codigo": 9
+        
+    },
+    {
+        "descripcion": "Leche",
+        "precio": 220,
+        "codigo": 10
+    },
+    {
+        "descripcion": "Yogur",
+        "precio": 300,
+        "codigo": 11
+
+    },
+    {
+        "descripcion": "Yerba",
+        "precio": 330,
+        "codigo": 12
+
+    },
+    {
+        "descripcion": "Pan",
+        "precio": 500,
+        "codigo": 13
+
+    },
+    {
+        "descripcion": "Helado",
+        "precio": 870,
+        "codigo": 14
+
+    },
+    {
+        "descripcion": "Fideos",
+        "precio": 160,
+        "codigo": 15
+
+    },
+    {
+        "descripcion": "Jamon",
+        "precio": 450,
+        "codigo": 16
+    }
+]

@@ -1,6 +1,6 @@
 #header {
     margin-top: 40px;
-    background-color: #393b39;
+    background-color: #363636;
     height: 80px;
     margin-bottom: 60px;
 }
@@ -11,11 +11,9 @@
 }
 
 #resultado {
-    background-color: #393b39;
+    background-color: #363636;
     margin-top: 40px;
-    height: 40px;
-    position: fixed;
-    bottom: 0;
+    height: 60px;
 }
 * {
     margin: 0;
@@ -50,14 +48,6 @@ li {
 .titulo {
     text-align: center;
     margin-top: 2rem;
-}
-
-footer,
-.navbar nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
 }
 
 #resultado {
