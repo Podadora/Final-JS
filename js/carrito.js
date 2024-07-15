@@ -21,6 +21,9 @@ botonCancelarCompra.onclick = () =>{
         <a href="productos.html" autofocus>Productos</a>,`,
         icon:"success"
         });;
+    botonConfirmarCompra.disabled = true;
+    botonCancelarCompra.disabled = true;
+    limpiarDiv(mainDIv);
 }
 
 botonConfirmarCompra.onclick = () => {

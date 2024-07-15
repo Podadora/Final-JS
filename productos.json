@@ -46,49 +46,49 @@
         "codigo": 8
     },
     {
-        "descripcion": "Queso",
-        "precio": 200,
+        "descripcion": "Lavandina",
+        "precio": 500,
         "codigo": 9
         
     },
     {
-        "descripcion": "Leche",
-        "precio": 220,
+        "descripcion": "Arroz",
+        "precio": 320,
         "codigo": 10
     },
     {
-        "descripcion": "Yogur",
-        "precio": 300,
+        "descripcion": "Harina",
+        "precio": 400,
         "codigo": 11
 
     },
     {
-        "descripcion": "Yerba",
+        "descripcion": "Salsa",
         "precio": 330,
         "codigo": 12
 
     },
     {
-        "descripcion": "Pan",
+        "descripcion": "Chocolate",
         "precio": 500,
         "codigo": 13
 
     },
     {
-        "descripcion": "Helado",
+        "descripcion": "Durazno",
         "precio": 870,
         "codigo": 14
 
     },
     {
-        "descripcion": "Fideos",
-        "precio": 160,
+        "descripcion": "Mermelada",
+        "precio": 660,
         "codigo": 15
 
     },
     {
-        "descripcion": "Jamon",
-        "precio": 450,
+        "descripcion": "Jabon",
+        "precio": 150,
         "codigo": 16
     }
 ]
